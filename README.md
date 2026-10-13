@@ -1,3 +1,3 @@
 # rock-paper-scissors-game
 
-Rock, Paper or Scissors Game for JavaScript practice. HTML DOM elements replaced by alerts and confirm modals.
+Rock, Paper or Scissors Game for JavaScript practice. HTML DOM elements replaced by alerts and confirm modals. Busy refactoring.
