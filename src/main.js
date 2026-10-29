@@ -1,5 +1,10 @@
 import "./style.css";
 
+const initGame = () => {
+  const startGame = confirm("Shall we play Rock, Paper, or Scissors?");
+  startGame ? playGame() : alert("Ok, maybe next time.");
+};
+
 let playGame = confirm("Shall we play Rock, Paper or Scissors?");
 
 if (playGame) {
