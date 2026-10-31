@@ -9,7 +9,7 @@ const initGame = () => {
 // Game flow function
 const playGame = () => {
   while (true) {
-    const playerChoice = getPlayerChoice();
+    let playerChoice = getPlayerChoice();
     playerChoice = formatPlayerChoice(playerChoice)
     if (playerChoice === "") {
       invalidChoice();
@@ -27,14 +27,14 @@ const playGame = () => {
     const computerChoice = getComputerChoice();
     const result = determineWinner(playerChoice, computerChoice);
     displayResult(result);
-    if (askToPlayAgain) {
+    if (askToPlayAgain()) {
       continue;
     } else {
       thanksForPlaying();
       break;
     }
   }
-}
+};
 
 
 
@@ -42,17 +42,16 @@ const playGame = () => {
 // Get player choice
 const getPlayerChoice = () => {
   return prompt("Please enter Rock, Paper, or Scissors.")
-}
+};
 
 //Format player choice
 const formatPlayerChoice = (playerChoice) => {
   if (playerChoice || playerChoice === "") {
-        // Continue playing
-        const playerOne = playerChoice.trim().toLocaleLowerCase();
+        return playerChoice.trim().toLocaleLowerCase();
     } else {
       return false;
     }
-  }
+  };
 
 //Decided not to play
 const decidedNotToPlay = () => {
@@ -60,11 +59,11 @@ const decidedNotToPlay = () => {
 };
 
 //Evaluate player choice
-const evaluatePlayerChoice = () => {
+const evaluatePlayerChoice = (playerChoice) => {
   if (
-        playerOne === "rock" ||
-        playerOne === "paper" ||
-        playerOne === "scissors"
+        playerChoice === "rock" ||
+        playerChoice === "paper" ||
+        playerChoice === "scissors"
       ) {
         return playerChoice;
       } else {
