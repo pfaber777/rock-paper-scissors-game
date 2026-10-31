@@ -9,17 +9,20 @@ const initGame = () => {
 // Game flow function
 const playGame = () => {
   while (true) {
-    let playerChoice = getPlayerChoice();
-    playerChoice = formatPlayerChoice(playerChoice)
+    let playerChoice = getPlayerChoice()
+    playerChoice = formatPlayerChoice(playerChoice);
+    // If player choice is blank
     if (playerChoice === "") {
       invalidChoice();
       continue;
     }
+    // If player choice was declined
     if (!playerChoice) {
       decidedNotToPlay();
       break;
     }
     playerChoice = evaluatePlayerChoice(playerChoice);
+    // if player choice is does not exist
     if (!playerChoice) {
       invalidChoice();
       continue;
@@ -44,47 +47,47 @@ const getPlayerChoice = () => {
   return prompt("Please enter Rock, Paper, or Scissors.")
 };
 
-//Format player choice
-const formatPlayerChoice = (playerChoice) => {
-  if (playerChoice || playerChoice === "") {
-        return playerChoice.trim().toLocaleLowerCase();
+// Format player choice
+const formatPlayerChoice = (playerTake) => {
+  if (playerTake || playerTake === "") {
+        return playerTake.trim().toLocaleLowerCase();
     } else {
       return false;
     }
   };
 
-//Decided not to play
+// Decided not to play
 const decidedNotToPlay = () => {
   alert("I guess you changed your mind.");
 };
 
-//Evaluate player choice
-const evaluatePlayerChoice = (playerChoice) => {
+// Evaluate player choice
+const evaluatePlayerChoice = (playerTake) => {
   if (
-        playerChoice === "rock" ||
-        playerChoice === "paper" ||
-        playerChoice === "scissors"
+        playerTake === "rock" ||
+        playerTake === "paper" ||
+        playerTake === "scissors"
       ) {
-        return playerChoice;
+        return playerTake;
       } else {
         return false;
       }
 };
 
-//Invalid choice
+// Invalid choice
 const invalidChoice = () => {
   alert("You didn't enter Rock, Paper or Scissors. Please pick one.");
 };
 
-//Get computer choice
+// Get computer choice
 const getComputerChoice = () => {
-  const randomNumber = Math.floor(Math.random() * 3 + 1);
+  const randomNumber = Math.floor(Math.random() * 3);
   const rpsArray = ["rock", "paper", "scissors"];
   return rpsArray[randomNumber]
 };
 
 
-//Determine Winner
+// Determine Winner
 const determineWinner = (player, computer) => {
   const winner =
           player === computer
@@ -104,17 +107,17 @@ const determineWinner = (player, computer) => {
   return winner;
 };
 
-//Display result
+// Display result
 const displayResult = (result) => {
   alert(result)
 };
 
-//Ask to play again
+// Ask to play again
 const askToPlayAgain = () => {
   return confirm("Play again?");
 };
 
-//Thanks for playing
+// Thanks for playing
 const thanksForPlaying = () => {
   alert("Ok, thanks for playing.");
 };
